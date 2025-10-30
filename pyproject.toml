@@ -1,0 +1,11 @@
+[project]
+name = "django-task-queue"
+version = "0.1.0"
+description = "" #TODO: Add description
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "celery>=5.5.3",
+    "djangorestframework>=3.16.1",
+    "redis>=7.0.1",
+]
