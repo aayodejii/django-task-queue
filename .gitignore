@@ -29,5 +29,6 @@ local_settings.py
 # Pipenv
 Pipfile.lock
 
-# Migrations
-*/migrations/
+
+# Technical Decisions
+TECHNICAL-DECISIONS-DRAFT.md
