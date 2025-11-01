@@ -5,11 +5,10 @@ from django_task_queue.celery import app
 from tasks.models import Job
 
 
-@app.task
-def resize_image(job_id, img_path):
+@app.task(bind=True, max_retries=3)
+def resize_image(self, job_id, img_path):
     """Resize image to thumbnail. Updates Job status throughout process."""
 
-    print("resize_image called with:", job_id, img_path)
     new_size = (128, 128)
     outfile = os.path.splitext(img_path)[0] + "_thumbnail.jpg"
     job = None
@@ -30,8 +29,10 @@ def resize_image(job_id, img_path):
         return outfile
 
     except Exception as e:
-        job.status = job.STATUS_FAILED
-        job.error_message = str(e)
-        job.save()
+        if job:
+            if self.request.retries >= self.max_retries:
+                job.status = job.STATUS_FAILED
+                job.error_message = str(e)
+                job.save()
 
-        raise
+        raise self.retry(exc=e, countdown=2**self.request.retries)

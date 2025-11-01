@@ -14,4 +14,3 @@ class JobSerializer(serializers.ModelSerializer):
             "error_message",
             "created_at",
         ]
-        # read_only_fields = ["id"]
