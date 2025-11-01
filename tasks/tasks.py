@@ -15,6 +15,13 @@ def resize_image(self, job_id, img_path):
 
     try:
         job = Job.objects.get(id=job_id)
+
+        if job.status == job.STATUS_COMPLETED:
+            return f"Already completed: {job.resized_image}"
+
+        if job.status == job.STATUS_PROCESSING:
+            raise Exception("Job is already being processed.")
+
         job.status = job.STATUS_PROCESSING
         job.save()
 

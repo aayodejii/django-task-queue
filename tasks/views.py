@@ -21,7 +21,9 @@ class JobView(APIView):
         if serializer.is_valid():
             instance = serializer.save()
 
-            resize_image.delay(instance.id, instance.original_image.path)
+            resize_image.apply_async(
+                (instance.id, instance.original_image.path), task_id=str(instance.id)
+            )
 
             return Response(status=status.HTTP_201_CREATED, data=serializer.data)
         return Response(status=status.HTTP_400_BAD_REQUEST, data=serializer.errors)
