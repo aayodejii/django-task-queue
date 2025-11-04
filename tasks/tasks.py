@@ -89,16 +89,3 @@ def cleanup_old_jobs():
         job.delete()
 
     return f"Deleted {job_count} jobs and {files_deleted} files older than 24 hours."
-
-
-# Things to consider:
-
-# What if the thumbnail file doesn't exist? (job failed, or file manually deleted)
-# What if you can't delete the file? (permissions issue)
-# Should you delete the original image too, or just the thumbnail?
-
-
-# Query old jobs
-# Delete files
-# Delete records
-# Return count
