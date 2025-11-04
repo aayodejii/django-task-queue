@@ -32,3 +32,6 @@ Pipfile.lock
 
 # Technical Decisions
 TECHNICAL-DECISIONS-DRAFT.md
+
+# Celery schedule
+celerybeat-schedule*

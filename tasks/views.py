@@ -27,5 +27,3 @@ class JobView(APIView):
 
             return Response(status=status.HTTP_201_CREATED, data=serializer.data)
         return Response(status=status.HTTP_400_BAD_REQUEST, data=serializer.errors)
-
-        # TODO: API endpoint to check job status returns the result

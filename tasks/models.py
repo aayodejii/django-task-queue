@@ -20,7 +20,7 @@ class Job(models.Model):
     status = models.CharField(
         max_length=50, choices=STATUS_CHOICES, default=STATUS_PENDING
     )
-    original_image = models.ImageField(upload_to="media/originals/")
-    resized_image = models.ImageField(upload_to="media/resized/", null=True, blank=True)
+    original_image = models.ImageField(upload_to="originals/")
+    resized_image = models.ImageField(upload_to="resized/", null=True, blank=True)
     error_message = models.TextField(null=True, blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
