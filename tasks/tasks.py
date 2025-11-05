@@ -1,10 +1,9 @@
 import os
+import uuid
 import logging
 from datetime import timedelta
-import uuid
 from PIL import Image
 
-from celery.schedules import crontab
 from django.conf import settings
 from django.utils import timezone
 
