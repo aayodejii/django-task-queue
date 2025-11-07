@@ -1,7 +1,7 @@
 [project]
 name = "django-task-queue"
 version = "0.1.0"
-description = "" #TODO: Add description
+description = "Async image resizing API with production-ready background task processing. Features retry logic with exponential backoff, idempotent task handling, and automated cleanup for long-term operation."
 readme = "README.md"
 requires-python = ">=3.12"
 dependencies = [

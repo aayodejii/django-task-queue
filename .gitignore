@@ -35,3 +35,6 @@ TECHNICAL-DECISIONS-DRAFT.md
 
 # Celery schedule
 celerybeat-schedule*
+
+# Test setup
+dev-setup
