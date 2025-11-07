@@ -1,3 +1,4 @@
+from datetime import timedelta
 import os
 from celery import Celery
 
@@ -11,7 +12,7 @@ app.autodiscover_tasks()
 app.conf.beat_schedule = {
     "cleanup_old_jobs": {
         "task": "tasks.tasks.cleanup_old_jobs",
-        "schedule": 10.0,
+        "schedule": timedelta(hours=1),
         "args": (),
     },
 }
